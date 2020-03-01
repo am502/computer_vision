@@ -6,9 +6,6 @@ def nms(image, radius):
             current_max = __get_max(image, height, width, bound, i, j)
             if image[i][j] != current_max:
                 image[i][j] = 0
-            else:
-                image[i][j] = 255
-
     return image
 
 

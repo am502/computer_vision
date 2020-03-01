@@ -7,11 +7,18 @@ def convolution(image, kernel):
     bound_i = int(kernel_height / 2)
     bound_j = int(kernel_width / 2)
     processed_image = np.zeros((height, width), dtype=float)
-    # processed_image = image.copy()
     for i in range(height):
         for j in range(width):
             processed_image[i][j] = __calculate_value(image, height, width, kernel, bound_i, bound_j, i, j)
     return processed_image
+
+
+def convolution_pixel(image, kernel, i, j):
+    height, width = image.shape
+    kernel_height, kernel_width = kernel.shape
+    bound_i = int(kernel_height / 2)
+    bound_j = int(kernel_width / 2)
+    return __calculate_value(image, height, width, kernel, bound_i, bound_j, i, j)
 
 
 def __calculate_value(image, height, width, kernel, bound_i, bound_j, current_i, current_j):

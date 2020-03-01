@@ -1,7 +1,7 @@
 import cv2
 
 from convolution.convolution import convolution
-from kernel.kernel_generator import *
+from utils.kernel_generator import *
 from utils.image_shower import show_image
 from utils.nms import nms
 
@@ -30,7 +30,7 @@ def harris(image, dx, dy, w, k, threshold):
     return image
 
 
-grayscale_image = cv2.imread('house.jpg', 0)
+grayscale_image = cv2.imread('waffle.jpg', 0)
 
 # dst = cv2.cornerHarris(grayscale_image,2,3,0.04)
 # height, width = grayscale_image.shape

@@ -19,7 +19,7 @@ def harris(height, width, dx, dy, w, k):
             trace = s_2_x[i][j] + s_2_y[i][j]
             r[i][j] = det - k * trace * trace
 
-    return r
+    return nms(r, 9)
 
 
 def main():

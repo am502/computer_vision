@@ -13,14 +13,6 @@ def convolution(image, kernel):
     return processed_image
 
 
-def convolution_pixel(image, kernel, i, j):
-    height, width = image.shape
-    kernel_height, kernel_width = kernel.shape
-    bound_i = int(kernel_height / 2)
-    bound_j = int(kernel_width / 2)
-    return __calculate_value(image, height, width, kernel, bound_i, bound_j, i, j)
-
-
 def __calculate_value(image, height, width, kernel, bound_i, bound_j, current_i, current_j):
     value = 0
     for i in range(-bound_i, bound_i + 1):

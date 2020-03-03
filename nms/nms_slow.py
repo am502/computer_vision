@@ -1,22 +1,23 @@
-def nms(image, radius):
+import numpy as np
+
+
+def nms_slow(image, radius):
     bound = int(radius / 2)
     height, width = image.shape
+    processed_image = np.zeros((height, width), dtype=float)
     for i in range(height):
         for j in range(width):
-            current_max = __get_max(image, height, width, bound, i, j)
-            if image[i][j] != current_max:
-                image[i][j] = 0
-    return image
+            processed_image[i][j] = __check_local_max(image, height, width, bound, i, j)
+    return processed_image
 
 
-def __get_max(image, height, width, bound, current_i, current_j):
-    current_max = __get_value(image, height, width, current_i, current_j)
+def __check_local_max(image, height, width, bound, current_i, current_j):
+    current_value = __get_value(image, height, width, current_i, current_j)
     for i in range(-bound, bound + 1):
         for j in range(-bound, bound + 1):
-            current_value = __get_value(image, height, width, i + current_i, j + current_j)
-            if current_value > current_max:
-                current_max = current_value
-    return current_max
+            if __get_value(image, height, width, i + current_i, j + current_j) > current_value:
+                return 0
+    return current_value
 
 
 def __get_value(image, height, width, i, j):

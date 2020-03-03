@@ -26,7 +26,7 @@ def harris(grayscale_image, mask_x, mask_y, w, k):
 
 
 def main():
-    image = cv2.imread('house.jpg')
+    image = cv2.imread('../resources/house.jpg')
     grayscale_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     height, width = grayscale_image.shape
 

@@ -1,4 +1,5 @@
 import cv2
+import matplotlib.pyplot as plt
 
 from convolution.convolution import convolution
 from nms.nms_slow import nms_slow
@@ -35,6 +36,11 @@ def main():
     responses = harris(grayscale_image, mask_x, mask_y, get_gauss_kernel(5, 1.4), 0.04)
 
     threshold = 0.1 * responses.max()
+
+    print(threshold)
+
+    plt.hist(responses, bins='auto')
+    plt.show()
 
     for i in range(height):
         for j in range(width):

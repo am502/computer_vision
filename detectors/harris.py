@@ -34,9 +34,11 @@ def main():
 
     responses = harris(grayscale_image, mask_x, mask_y, get_gauss_kernel(5, 1.4), 0.04)
 
+    threshold = 0.1 * responses.max()
+
     for i in range(height):
         for j in range(width):
-            if responses[i][j] > 0.1 * responses.max():
+            if responses[i][j] > threshold:
                 cv2.circle(image, (j, i), 2, (0, 0, 255), 1)
 
     show_image(responses, image)

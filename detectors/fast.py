@@ -25,8 +25,8 @@ class Fast:
         return result
 
     def __fast_check(self, current_i, current_j):
-        first_condition = self.image[current_i, current_j] + self.threshold
-        second_condition = self.image[current_i, current_j] - self.threshold
+        first_condition = self.image[current_i][current_j] + self.threshold
+        second_condition = self.image[current_i][current_j] - self.threshold
         first_condition_count = 0
         second_condition_count = 0
         for k in range(len(Fast.fast_indices)):
@@ -44,8 +44,8 @@ class Fast:
         return False
 
     def __check(self, current_i, current_j):
-        first_condition = self.image[current_i, current_j] + self.threshold
-        second_condition = self.image[current_i, current_j] - self.threshold
+        first_condition = self.image[current_i][current_j] + self.threshold
+        second_condition = self.image[current_i][current_j] - self.threshold
         first_condition_count = 0
         second_condition_count = 0
         for k in range(len(Fast.alpha_i)):

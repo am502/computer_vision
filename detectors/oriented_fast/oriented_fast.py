@@ -128,4 +128,5 @@ def main():
     show_image(image)
 
 
-main()
+if __name__ == "__main__":
+    main()

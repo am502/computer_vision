@@ -8,11 +8,12 @@ from utils.masks_generator import *
 
 
 class OrientedFast:
-    def __init__(self, image, radius, threshold, centroid_radius):
+    def __init__(self, image, radius, threshold, centroid_radius, scale):
         self.image = image
         self.height, self.width = image.shape
         self.threshold = threshold
         self.check_coefficient = 0.75
+        self.scale = scale
         self.__init_masks(radius)
         self.__init_centroid_masks(centroid_radius)
 
@@ -63,7 +64,7 @@ class OrientedFast:
                 if self.__check(i, j, True):
                     if self.__check(i, j, False):
                         angle = self.__calculate_angle(i, j)
-                        corners.append(Corner(i, j, angle, scale=1))
+                        corners.append(Corner(i, j, angle, scale=self.scale))
         return corners
 
     def __check(self, current_i, current_j, is_fast_check):
@@ -119,7 +120,7 @@ def main():
     image = cv2.imread('../../resources/eagle.jpeg')
     grayscale_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-    corners = OrientedFast(grayscale_image, 3, 60, 3).detect()
+    corners = OrientedFast(grayscale_image, 3, 60, 3, "x").detect()
 
     for c in corners:
         cv2.circle(image, (c.j, c.i), 2, (0, 0, 255), 1)

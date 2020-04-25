@@ -33,7 +33,7 @@ class Brief:
                 new_pos1 = np.stack([pos1[:, 1], pos1[:, 0], np.zeros(len(pos1))], axis=1)
                 new_pos1 = np.round(np.dot(new_pos1, rotation_matrix.T))
                 new_pos1 = new_pos1.astype(int)
-                new_pos2 = np.stack([pos2[:, 1], pos2[:, 0], np.zeros(len(pos2), dtype=int)], axis=1)
+                new_pos2 = np.stack([pos2[:, 1], pos2[:, 0], np.zeros(len(pos2))], axis=1)
                 new_pos2 = np.round(np.dot(new_pos2, rotation_matrix.T))
                 new_pos2 = new_pos2.astype(int)
 
